@@ -11,18 +11,18 @@
 
 IslandGenerator::IslandGenerator()
 {
-    points_string = "[0,0],[1,0],[1,1],[0,1]";
-    land_noise = (float)0.0;
-    land_height = (float)0.01;
-    seabed_noise = (float)0.0;
-    seabed_height = (float)0.01;
+    points_string = "[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.1]";
+    land_noise = (float)0.32;
+    land_height = (float)0.06;
+    seabed_noise = (float)0.1;
+    seabed_height = (float)0.17;
     water_height = (float)0.0;
-    frequency = (float)8.0;
+    frequency = (float)3.6;
     resolution = 40;
-    octaves = (float)0.00;
-    scroll = (float)0.00;
-    roughness = (float)0.00;
-    roughness_frequency = (float)1.0;
+    octaves = (float)0.43;
+    scroll = (float)2.47;
+    roughness = (float)0.14;
+    roughness_frequency = (float)7;
     srand((unsigned) time(0));
     seed = rand();
     name = "test";
