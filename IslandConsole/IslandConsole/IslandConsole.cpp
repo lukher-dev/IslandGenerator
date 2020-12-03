@@ -1,7 +1,7 @@
 ﻿// main.cpp
 #include <iostream>
 #include <string.h>
-#include "islandgenerator.h"
+#include "../../IslandGenerator/islandgenerator.h"
 
 int main(int argc, char* argv[])
 {

@@ -4,7 +4,7 @@
 #define MYGLWIDGET_H
 
 #include <QGLWidget>
-#include "islandgenerator.h"
+#include "../IslandGenerator/islandgenerator.h"
 
 class MyGLWidget : public QGLWidget
 {

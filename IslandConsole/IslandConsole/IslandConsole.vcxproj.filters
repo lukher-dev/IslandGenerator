@@ -18,18 +18,18 @@
     <ClCompile Include="IslandConsole.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="islandgenerator.cpp">
+    <ClCompile Include="..\..\IslandGenerator\PerlinNoise.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="PerlinNoise.cpp">
+    <ClCompile Include="..\..\IslandGenerator\islandgenerator.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="islandgenerator.h">
+    <ClInclude Include="..\..\IslandGenerator\PerlinNoise.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="PerlinNoise.h">
+    <ClInclude Include="..\..\IslandGenerator\islandgenerator.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

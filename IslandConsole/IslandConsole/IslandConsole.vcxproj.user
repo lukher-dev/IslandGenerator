@@ -4,4 +4,7 @@
     <LocalDebuggerCommandArguments>[0,0],[1,0],[1,1],[0,1] 0.0 0.01 0.0 0.01 0.0 8.0 40 0.0 0.0 0.0 1.0 8</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup>
+    <ShowAllFiles>false</ShowAllFiles>
+  </PropertyGroup>
 </Project>

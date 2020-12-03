@@ -139,13 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\IslandGenerator\islandgenerator.cpp" />
+    <ClCompile Include="..\..\IslandGenerator\PerlinNoise.cpp" />
     <ClCompile Include="IslandConsole.cpp" />
-    <ClCompile Include="islandgenerator.cpp" />
-    <ClCompile Include="PerlinNoise.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="islandgenerator.h" />
-    <ClInclude Include="PerlinNoise.h" />
+    <ClInclude Include="..\..\IslandGenerator\islandgenerator.h" />
+    <ClInclude Include="..\..\IslandGenerator\PerlinNoise.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

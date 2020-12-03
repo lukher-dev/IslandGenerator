@@ -13,14 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    PerlinNoise.cpp \
-    islandgenerator.cpp \
+    ../IslandGenerator/PerlinNoise.cpp \
+    ../IslandGenerator/islandgenerator.cpp \
         window.cpp \
     myglwidget.cpp
 
 HEADERS  += window.h \
-    PerlinNoise.h \
-    islandgenerator.h \
+    ../IslandGenerator/PerlinNoise.h \
+    ../IslandGenerator/islandgenerator.h \
     myglwidget.h
 
 FORMS    += window.ui
