@@ -9,10 +9,7 @@ class IslandGenerator
 protected:
     std::vector<std::vector<float>> generateHeightMap();
     std::vector<std::vector<float>> generatePerlinMatrix();
-    std::vector<std::vector<float>> plotLine(std::vector<std::vector<float>> heightMap, std::vector<std::vector<float>> perlinMatrix, float fixed_x0, float fixed_y0, float fixed_x1, float fixed_y1);
-    std::vector<std::vector<float>> plotPolygon(std::vector<std::vector<float>> heightMap, std::vector<std::vector<float>> perlinMatrix, std::vector<std::vector<float>> points);
-    void spawnWater(std::vector<std::vector<float>>& heightMap, std::vector<std::vector<float>>& perlinMatrix, int i, int j);
-    void raiseLand(std::vector<std::vector<float>>& heightMap, std::vector<std::vector<float>>& perlinMatrix);
+    std::vector<std::vector<float>> plotPolygon();
 public:
     IslandGenerator();
     void setLandNoise(float amount) { land_noise = amount; };
