@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>348</width>
-    <height>534</height>
+    <height>642</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -293,6 +293,9 @@
      </item>
      <item>
       <widget class="QSlider" name="RoughnessFrequencySlider">
+       <property name="maximum">
+        <number>99</number>
+       </property>
        <property name="value">
         <number>7</number>
        </property>
