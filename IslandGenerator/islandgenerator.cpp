@@ -25,7 +25,7 @@ IslandGenerator::IslandGenerator()
 	roughness_frequency = (float)7;
 	srand((unsigned)time(0));
 	seed = rand();
-	name = "test";
+	name = "output";
 }
 
 void IslandGenerator::saveToFile() {
@@ -40,19 +40,19 @@ void IslandGenerator::saveToFile() {
 
 	std::ofstream jsonFile(name + "_params.json");
 	jsonFile << "{\n";
-	jsonFile << "points_string" << ": " << points_string << "\n";
-	jsonFile << "land_noise" << ": " << land_noise << ",\n";
-	jsonFile << "land_height" << ": " << land_height << ",\n";
-	jsonFile << "seabed_noise" << ": " << seabed_noise << ",\n";
-	jsonFile << "seabed_height" << ": " << seabed_height << ",\n";
-	jsonFile << "water_height" << ": " << water_height << ",\n";
-	jsonFile << "frequency" << ": " << frequency << ",\n";
-	jsonFile << "resolution" << ": " << resolution << ",\n";
-	jsonFile << "octaves" << ": " << octaves << ",\n";
-	jsonFile << "scroll" << ": " << scroll << ",\n";
-	jsonFile << "roughness" << ": " << roughness << ",\n";
-	jsonFile << "roughness_frequency" << ": " << roughness_frequency << ",\n";
-	jsonFile << "seed" << ": " << seed << ",\n";
+	jsonFile << "\"points_string\"" << ": \"" << points_string << "\",\n";
+	jsonFile << "\"land_noise\"" << ": \"" << land_noise << "\",\n";
+	jsonFile << "\"land_height\"" << ": \"" << land_height << "\",\n";
+	jsonFile << "\"seabed_noise\"" << ": \"" << seabed_noise << "\",\n";
+	jsonFile << "\"seabed_height\"" << ": \"" << seabed_height << "\",\n";
+	jsonFile << "\"water_height\"" << ": \"" << water_height << "\",\n";
+	jsonFile << "\"frequency\"" << ": \"" << frequency << "\",\n";
+	jsonFile << "\"resolution\"" << ": \"" << resolution << "\",\n";
+	jsonFile << "\"octaves\"" << ": \"" << octaves << "\",\n";
+	jsonFile << "\"scroll\"" << ": \"" << scroll << "\",\n";
+	jsonFile << "\"roughness\"" << ": \"" << roughness << "\",\n";
+	jsonFile << "\"roughness_frequency\"" << ": \"" << roughness_frequency << "\",\n";
+	jsonFile << "\"seed\"" << ": \"" << seed << "\"\n";
 	jsonFile << "}\n";
 	jsonFile.close();
 }
@@ -124,8 +124,8 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 		nodes = 0; 
 		j = polyCorners - 1;
 		for (i = 0; i < polyCorners; i++) {
-			if (points_processed[i][1] < (double)pixelY && points_processed[j][1] >= (double)pixelY
-				|| points_processed[j][1] < (double)pixelY && points_processed[i][1] >= (double)pixelY) {
+            if (((points_processed[i][1] < (double)pixelY) && (points_processed[j][1] >= (double)pixelY))
+                || ((points_processed[j][1] < (double)pixelY) && (points_processed[i][1] >= (double)pixelY))) {
 				nodeX[nodes++] = (int)(points_processed[i][0] + (pixelY - points_processed[i][1]) / (points_processed[j][1] - points_processed[i][1])
 					* (points_processed[j][0] - points_processed[i][0]));
 			}

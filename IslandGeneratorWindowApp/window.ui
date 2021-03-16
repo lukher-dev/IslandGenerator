@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Window</class>
+ <widget class="QWidget" name="Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>348</width>
+    <height>642</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Window</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="MyGLWidget" name="myGLWidget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>200</width>
+       <height>200</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_12">
+     <item>
+      <widget class="QLineEdit" name="pointsEdit">
+       <property name="text">
+        <string>[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.1]</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="loadButton">
+       <property name="text">
+        <string>Reload</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="Resolution">
+       <property name="text">
+        <string>Resolution</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="resolutionSlider">
+       <property name="minimum">
+        <number>2</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>40</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Frequency</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="frequencySlider">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>36</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Land height</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="landSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>6</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Land noise</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="landNoiseSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>32</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Seabed height</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="waterSlider">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>17</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Seabed noise</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="waterNoiseSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>10</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Octaves</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="octavesSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>43</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Scroll</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="scrollSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>1600</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Roughness</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="roughnessSlider">
+       <property name="maximum">
+        <number>50</number>
+       </property>
+       <property name="value">
+        <number>14</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Roughness freq</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="RoughnessFrequencySlider">
+       <property name="maximum">
+        <number>99</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_11">
+     <item>
+      <widget class="QLineEdit" name="saveEdit">
+       <property name="text">
+        <string>test</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton">
+       <property name="text">
+        <string>Save</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QWidget</extends>
+   <header>myglwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>setXRotation(int)</slot>
+    <slot>setZRotation(int)</slot>
+    <slot>setYRotation(int)</slot>
+    <slot>setNoise(int)</slot>
+    <slot>setLand(int)</slot>
+    <slot>setResolution(int)</slot>
+    <slot>setFrequency(float)</slot>
+    <slot>setFrequency(int)</slot>
+    <slot>setLandNoise(int)</slot>
+    <slot>setWaterNoise(int)</slot>
+    <slot>setWater(int)</slot>
+    <slot>setOctaves(int)</slot>
+    <slot>setScroll(int)</slot>
+    <slot>setRougness(int)</slot>
+    <slot>setRoughness(int)</slot>
+    <slot>setRoughnessFrequency(int amount)</slot>
+    <slot>setRoughnessFrequency(int)</slot>
+    <slot>setText(std::string name)</slot>
+    <slot>saveToFile()</slot>
+    <slot>setText(QString name)</slot>
+    <slot>setText(QString)</slot>
+    <slot>setPointsString(QString)</slot>
+    <slot>loadPointsFromFile()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>landNoiseSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setLandNoise(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>landSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setLand(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resolutionSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setResolution(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>frequencySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setFrequency(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>waterNoiseSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setWaterNoise(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>109</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>waterSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setWater(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>109</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>octavesSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setOctaves(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>464</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scrollSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setScroll(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>466</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roughnessSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setRoughness(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>203</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RoughnessFrequencySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setRoughnessFrequency(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>214</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>saveToFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pointsEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setPointsString(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>loadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>loadPointsFromFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
