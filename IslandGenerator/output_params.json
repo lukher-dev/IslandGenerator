@@ -1,15 +1,15 @@
 {
-"points_string": "0.869902,0.587298,0.215381,0.714040,0.121556,0.586388,0.129328,0.822186,0.521956,0.527042",
-"land_noise": "0.617371",
-"land_height": "0.527042",
-"seabed_noise": "0.521956",
-"seabed_height": "0.822186",
-"water_height": "0.129328",
-"frequency": "0.586388",
-"resolution": "99",
-"octaves": "0.71404",
-"scroll": "0.215381",
-"roughness": "0.587298",
-"roughness_frequency": "0.869902",
-"seed": "1585897103"
+"points_string": "0,0,1,0,1,1,0,1",
+"land_noise": "0",
+"land_height": "0.01",
+"seabed_noise": "0",
+"seabed_height": "0.01",
+"water_height": "0",
+"frequency": "8",
+"resolution": "40",
+"octaves": "0",
+"scroll": "0",
+"roughness": "0",
+"roughness_frequency": "1",
+"seed": "8"
 }

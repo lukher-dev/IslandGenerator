@@ -1,0 +1,1 @@
+g++ -o test ./test.cpp islandgenerator.h islandgenerator.cpp PerlinNoise.h PerlinNoise.cpp

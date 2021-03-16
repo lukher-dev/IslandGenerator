@@ -124,8 +124,8 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 		nodes = 0; 
 		j = polyCorners - 1;
 		for (i = 0; i < polyCorners; i++) {
-            if (((points_processed[i][1] < (double)pixelY) && (points_processed[j][1] >= (double)pixelY))
-                || ((points_processed[j][1] < (double)pixelY) && (points_processed[i][1] >= (double)pixelY))) {
+            if (points_processed[i][1] < (double)pixelY && points_processed[j][1] >= (double)pixelY
+                || points_processed[j][1] < (double)pixelY && points_processed[i][1] >= (double)pixelY) {
 				nodeX[nodes++] = (int)(points_processed[i][0] + (pixelY - points_processed[i][1]) / (points_processed[j][1] - points_processed[i][1])
 					* (points_processed[j][0] - points_processed[i][0]));
 			}
@@ -152,10 +152,10 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 				if (nodeX[i + 1] > resolution) nodeX[i + 1] = resolution;
 				for (pixelX = nodeX[i]; pixelX < nodeX[i + 1]; pixelX++) {
                     int splash = (int)abs(roughness * resolution * (pn.noise(roughness_frequency/20 * pixelX, roughness_frequency/20 * pixelY, scroll) - 0.5));
-                    for (int h = std::max(pixelY-splash,0); h <= std::min(pixelY+splash,resolution-1); h++) {
+                    for (int h = std::max(pixelY-splash,0); h <= std::min(pixelY+splash,resolution-2); h++) {
                         height_map[pixelX][h] = float((land_noise * 2 * (perlinMatrix[pixelX][h] - 0.5) * range) + land_height);
                     }
-                    for (int h = std::max(pixelX-splash,0); h <= std::min(pixelX+splash,resolution-1); h++) {
+                    for (int h = std::max(pixelX-splash,0); h <= std::min(pixelX+splash,resolution-2); h++) {
                         height_map[h][pixelY] = float((land_noise * 2 * (perlinMatrix[h][pixelY] - 0.5) * range) + land_height);
                     }
 				}
