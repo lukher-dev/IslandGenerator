@@ -10,6 +10,8 @@ protected:
     std::vector<std::vector<float>> generateHeightMap();
     std::vector<std::vector<float>> generatePerlinMatrix();
     std::vector<std::vector<float>> plotPolygon();
+    std::vector<std::vector<float>> extrudeTerrain(std::vector<std::vector<float>> landMap);
+    std::vector<std::vector<float>> plateu(std::vector<std::vector<float>> landMap);
 public:
     IslandGenerator();
     void setLandNoise(float amount) { land_noise = amount; };
@@ -21,6 +23,9 @@ public:
     void setOctaves(float amount) { octaves = amount; };
     void setScroll(float amount) { scroll = amount; };
     void setRoughness(float amount) { roughness = amount; };
+    void setFlatnessStrength(float amount) { flatness_strength = amount; };
+    void setFlatnessFreq(float amount) { flatness_freq = amount; };
+    void setFlatnessSize(float amount) { flatness_size = amount; };
     void setRoughnessFrequency(float amount) { roughness_frequency = amount; };
     void setWaterHeight(float amount) { water_height = amount; };
     void setName(std::string in_name) { name = in_name; };
@@ -43,6 +48,9 @@ private:
     float scroll;
     float roughness;
     float roughness_frequency;
+    float flatness_freq;
+    float flatness_strength;
+    float flatness_size;
     float water_height;
     int seed;
     std::string name;

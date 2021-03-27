@@ -3,10 +3,10 @@
 #include <string.h>
 #include "./islandgenerator.h"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     IslandGenerator islandGenerator;
-    std::string arguments[13];
+    std::string arguments[16];
     arguments[0] = "[0,0],[1,0],[1,1],[0,1]";
     arguments[1] = "0.0";
     arguments[2] = "0.01";
@@ -19,10 +19,13 @@ int main(int argc, char* argv[])
     arguments[9] = "0.00";
     arguments[10] = "0.00";
     arguments[11] = "1.0";
-    arguments[12] = "8";
+    arguments[12] = "0";
+    arguments[13] = "0";
+    arguments[14] = "0";
+    arguments[15] = "8";
 
     for (int i = 1; i < argc; ++i)
-        arguments[i-1] = argv[i];
+        arguments[i - 1] = argv[i];
 
     islandGenerator.setPointsString(arguments[0]);
     islandGenerator.setLandNoise(std::stof(arguments[1]));
@@ -36,7 +39,10 @@ int main(int argc, char* argv[])
     islandGenerator.setScroll(std::stof(arguments[9]));
     islandGenerator.setRoughness(std::stof(arguments[10]));
     islandGenerator.setRoughnessFrequency(std::stof(arguments[11]));
-    islandGenerator.setSeed(std::stoi(arguments[12]));
+    islandGenerator.setFlatnessStrength(std::stof(arguments[12]));
+    islandGenerator.setFlatnessSize(std::stof(arguments[13]));
+    islandGenerator.setFlatnessFreq(std::stof(arguments[14]));
+    islandGenerator.setSeed(std::stoi(arguments[15]));
 
     islandGenerator.generateIsland();
 

@@ -41,6 +41,9 @@ public slots:
     void setOctaves(int amount);
     void setScroll(int amount);
     void setRoughness(int amount);
+    void setFlatnessFreq(int amount);
+    void setFlatnessSize(int amount);
+    void setFlatnessStrength(int amount);
     void setRoughnessFrequency(int amount);
     void setText(QString  name);
     void saveToFile();

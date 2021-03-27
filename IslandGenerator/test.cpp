@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
       islandGenerator.setResolution((rand() % 100) + 2);
       islandGenerator.setOctaves((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
       islandGenerator.setScroll((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
+      islandGenerator.setFlatnessStrength((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
+      islandGenerator.setFlatnessFreq((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
+      islandGenerator.setFlatnessSize((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
       islandGenerator.setRoughness((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
       islandGenerator.setRoughnessFrequency((static_cast<float>(rand()) / static_cast<float>(RAND_MAX))*1000);
       islandGenerator.setSeed(rand());

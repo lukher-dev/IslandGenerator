@@ -124,6 +124,26 @@ void MyGLWidget::setRoughness(int amount){
     updateGL();
 }
 
+void MyGLWidget::setFlatnessFreq(int amount){
+    islandGenerator.setFlatnessFreq(amount/10.0);
+    updateMap();
+    updateGL();
+}
+
+void MyGLWidget::setFlatnessSize(int amount){
+    islandGenerator.setFlatnessSize(amount/100.0);
+    updateMap();
+    updateGL();
+}
+
+
+void MyGLWidget::setFlatnessStrength(int amount){
+    islandGenerator.setFlatnessStrength(amount/10.0);
+    updateMap();
+    updateGL();
+}
+
+
 void MyGLWidget::setRoughnessFrequency(int amount){
     islandGenerator.setRoughnessFrequency(amount/10.0);
     updateMap();

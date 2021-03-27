@@ -12,10 +12,10 @@
 IslandGenerator::IslandGenerator()
 {
 	points_string = "[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.1]";
-	land_noise = (float)0.32;
+    land_noise = (float)0.36;
 	land_height = (float)0.06;
-	seabed_noise = (float)0.1;
-	seabed_height = (float)0.17;
+    seabed_noise = (float)0.08;
+    seabed_height = (float)0.1;
 	water_height = (float)0.0;
 	frequency = (float)3.6;
 	resolution = 40;
@@ -23,6 +23,9 @@ IslandGenerator::IslandGenerator()
 	scroll = (float)2.47;
 	roughness = (float)0.14;
 	roughness_frequency = (float)7;
+    flatness_size = (float) 0.5;
+    flatness_freq = (float) 3.6;
+    flatness_strength = (float) 6;
 	srand((unsigned)time(0));
 	seed = rand();
 	name = "output";
@@ -50,6 +53,9 @@ void IslandGenerator::saveToFile() {
 	jsonFile << "\"resolution\"" << ": \"" << resolution << "\",\n";
 	jsonFile << "\"octaves\"" << ": \"" << octaves << "\",\n";
 	jsonFile << "\"scroll\"" << ": \"" << scroll << "\",\n";
+    jsonFile << "\"flatness_size\"" << ": \"" << flatness_size << "\",\n";
+    jsonFile << "\"flatness_freq\"" << ": \"" << flatness_freq << "\",\n";
+    jsonFile << "\"flatness_strength\"" << ": \"" << flatness_strength << "\",\n";
 	jsonFile << "\"roughness\"" << ": \"" << roughness << "\",\n";
 	jsonFile << "\"roughness_frequency\"" << ": \"" << roughness_frequency << "\",\n";
 	jsonFile << "\"seed\"" << ": \"" << seed << "\"\n";
@@ -103,13 +109,14 @@ std::vector<std::vector<float>> IslandGenerator::generateHeightMap() {
 }
 
 std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
-    float range = 1 - land_height;
     PerlinNoise pn(seed);
 	std::vector<int> nodeX(resolution);
 	int  nodes, pixelX, pixelY, i, j, swap;
 	int polyCorners = points.size();
-	std::vector<std::vector<float>> height_map = generateHeightMap();
-
+    std::vector<std::vector<float>> height_map(resolution);
+    for (int i = 0; i < resolution; i += 1) {
+        height_map[i].resize(resolution, 0);
+    }
 	std::vector<std::vector<float>> points_processed(polyCorners);
 
 	for (i = 0; i < polyCorners; i++) {
@@ -119,7 +126,6 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 
 	//  Loop through the rows of the image.
 	for (pixelY = 0; pixelY < resolution; pixelY++) {
-
 		//  Build a list of nodes.
 		nodes = 0; 
 		j = polyCorners - 1;
@@ -145,7 +151,6 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 
 		//  Fill the pixels between node pairs.
 		for (i = 0; i < nodes; i += 2) {
-			height_map[i].resize(resolution, water_height);
 			if (nodeX[i] >= resolution) break;
 			if (nodeX[i + 1] > 0) {
 				if (nodeX[i] < 0) nodeX[i] = 0;
@@ -153,16 +158,67 @@ std::vector<std::vector<float>> IslandGenerator::plotPolygon() {
 				for (pixelX = nodeX[i]; pixelX < nodeX[i + 1]; pixelX++) {
                     int splash = (int)abs(roughness * resolution * (pn.noise(roughness_frequency/20 * pixelX, roughness_frequency/20 * pixelY, scroll) - 0.5));
                     for (int h = std::max(pixelY-splash,0); h <= std::min(pixelY+splash,resolution-2); h++) {
-                        height_map[pixelX][h] = float((land_noise * 2 * (perlinMatrix[pixelX][h] - 0.5) * range) + land_height);
+                        height_map[pixelX][h] = 1;
                     }
                     for (int h = std::max(pixelX-splash,0); h <= std::min(pixelX+splash,resolution-2); h++) {
-                        height_map[h][pixelY] = float((land_noise * 2 * (perlinMatrix[h][pixelY] - 0.5) * range) + land_height);
+                        height_map[h][pixelY] = 1;
                     }
 				}
 			}
 		}
 	}
 	return height_map;
+}
+
+float distance(int x1, int y1, int x2, int y2)
+{
+    return sqrt(pow(x2 - x1, 2) +
+                pow(y2 - y1, 2) * 1.0);
+}
+
+std::vector<std::vector<float>> IslandGenerator::plateu(std::vector<std::vector<float>> landMap) {
+    PerlinNoise pn(seed);
+        for (int i = 0; i < resolution; i++) {
+            for (int j = 0; j < resolution; j++) {
+                if(pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j)<flatness_size){
+                   landMap[i][j] = landMap[i][j]*pow(pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j)/flatness_size,flatness_strength);
+                }
+            }
+        }
+
+    return landMap;
+}
+
+std::vector<std::vector<float>> IslandGenerator::extrudeTerrain(std::vector<std::vector<float>> landMap) {
+    float range = 1 - land_height;
+    std::vector<std::vector<float>> height_map = generateHeightMap();
+
+    for (int i = 0; i < resolution; i += 1) {
+        for (int j = 0; j < resolution; j += 1) {
+            if(landMap[i][j]>0){
+                float nearSea = 1;
+                if(i+1 < resolution && landMap[i+1][j] == 0){
+                    nearSea = 0.5;
+                    height_map[i+1][j]*=0.5;
+                }
+                if(j+1 < resolution && landMap[i][j+1] == 0){
+                    nearSea = 0.5;
+                    height_map[i][j+1]*=0.5;
+                }
+                if(i-1 >= 0 && landMap[i-1][j] == 0){
+                    nearSea = 0.5;
+                    height_map[i-1][j]*=0.5;
+                }
+                if(j-1 >= 0 && landMap[i][j-1] == 0){
+                    nearSea = 0.5;
+                    height_map[i][j-1]*=0.5;
+                }
+                height_map[i][j] = nearSea * float((landMap[i][j] * land_noise * 2 * (perlinMatrix[i][j] - 0.5) * range) + land_height);
+            }
+        }
+    }
+
+    return height_map;
 }
 
 void IslandGenerator::loadPoints() {
@@ -205,7 +261,7 @@ void IslandGenerator::loadPoints() {
 }
 
 void IslandGenerator::generateIsland() {
-	loadPoints();
+    loadPoints();
 	perlinMatrix = generatePerlinMatrix();
-	height_map = plotPolygon();
+    height_map = extrudeTerrain(plateu(plotPolygon()));
 }

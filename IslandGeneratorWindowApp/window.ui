@@ -29,7 +29,7 @@
      <item>
       <widget class="QLineEdit" name="pointsEdit">
        <property name="text">
-        <string>[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.1]</string>
+        <string>[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.2]</string>
        </property>
       </widget>
      </item>
@@ -144,7 +144,7 @@
         <number>1</number>
        </property>
        <property name="value">
-        <number>32</number>
+        <number>36</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -171,7 +171,7 @@
         <number>100</number>
        </property>
        <property name="value">
-        <number>17</number>
+        <number>10</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -198,7 +198,7 @@
         <number>100</number>
        </property>
        <property name="value">
-        <number>10</number>
+        <number>8</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -250,6 +250,78 @@
        </property>
        <property name="maximum">
         <number>1600</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_13">
+     <item>
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>Flatness Strength</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="flatnessSlider">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>60</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_14">
+     <item>
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>Flatness Size</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="flatnessSizeSlider">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>50</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_15">
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Flatness Freq</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="flatnessFreqSlider">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>36</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -357,6 +429,9 @@
     <slot>setText(QString)</slot>
     <slot>setPointsString(QString)</slot>
     <slot>loadPointsFromFile()</slot>
+    <slot>setFlatnessFreq(int)</slot>
+    <slot>setFlatnessSize(int)</slot>
+    <slot>setFlatnessStrength(int)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -579,6 +654,54 @@
     <hint type="sourcelabel">
      <x>297</x>
      <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flatnessSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setFlatnessStrength(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>479</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flatnessFreqSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setFlatnessFreq(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>535</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flatnessSizeSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setFlatnessSize(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>507</y>
     </hint>
     <hint type="destinationlabel">
      <x>173</x>

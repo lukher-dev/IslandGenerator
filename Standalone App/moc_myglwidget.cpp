@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MyGLWidget_t {
-    QByteArrayData data[27];
-    char stringdata0[318];
+    QByteArrayData data[30];
+    char stringdata0[370];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,13 +52,16 @@ QT_MOC_LITERAL(16, 184, 8), // "setWater"
 QT_MOC_LITERAL(17, 193, 10), // "setOctaves"
 QT_MOC_LITERAL(18, 204, 9), // "setScroll"
 QT_MOC_LITERAL(19, 214, 12), // "setRoughness"
-QT_MOC_LITERAL(20, 227, 21), // "setRoughnessFrequency"
-QT_MOC_LITERAL(21, 249, 7), // "setText"
-QT_MOC_LITERAL(22, 257, 4), // "name"
-QT_MOC_LITERAL(23, 262, 10), // "saveToFile"
-QT_MOC_LITERAL(24, 273, 15), // "setPointsString"
-QT_MOC_LITERAL(25, 289, 9), // "in_string"
-QT_MOC_LITERAL(26, 299, 18) // "loadPointsFromFile"
+QT_MOC_LITERAL(20, 227, 15), // "setFlatnessFreq"
+QT_MOC_LITERAL(21, 243, 15), // "setFlatnessSize"
+QT_MOC_LITERAL(22, 259, 19), // "setFlatnessStrength"
+QT_MOC_LITERAL(23, 279, 21), // "setRoughnessFrequency"
+QT_MOC_LITERAL(24, 301, 7), // "setText"
+QT_MOC_LITERAL(25, 309, 4), // "name"
+QT_MOC_LITERAL(26, 314, 10), // "saveToFile"
+QT_MOC_LITERAL(27, 325, 15), // "setPointsString"
+QT_MOC_LITERAL(28, 341, 9), // "in_string"
+QT_MOC_LITERAL(29, 351, 18) // "loadPointsFromFile"
 
     },
     "MyGLWidget\0xRotationChanged\0\0angle\0"
@@ -67,9 +70,11 @@ QT_MOC_LITERAL(26, 299, 18) // "loadPointsFromFile"
     "setLandNoise\0amount\0setLand\0setFrequency\0"
     "setResolution\0number\0setWaterNoise\0"
     "setWater\0setOctaves\0setScroll\0"
-    "setRoughness\0setRoughnessFrequency\0"
-    "setText\0name\0saveToFile\0setPointsString\0"
-    "in_string\0loadPointsFromFile"
+    "setRoughness\0setFlatnessFreq\0"
+    "setFlatnessSize\0setFlatnessStrength\0"
+    "setRoughnessFrequency\0setText\0name\0"
+    "saveToFile\0setPointsString\0in_string\0"
+    "loadPointsFromFile"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +84,7 @@ static const uint qt_meta_data_MyGLWidget[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,28 +92,31 @@ static const uint qt_meta_data_MyGLWidget[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  114,    2, 0x06 /* Public */,
-       4,    1,  117,    2, 0x06 /* Public */,
-       5,    1,  120,    2, 0x06 /* Public */,
+       1,    1,  129,    2, 0x06 /* Public */,
+       4,    1,  132,    2, 0x06 /* Public */,
+       5,    1,  135,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  123,    2, 0x0a /* Public */,
-       7,    1,  126,    2, 0x0a /* Public */,
-       8,    1,  129,    2, 0x0a /* Public */,
-       9,    1,  132,    2, 0x0a /* Public */,
-      11,    1,  135,    2, 0x0a /* Public */,
-      12,    1,  138,    2, 0x0a /* Public */,
-      13,    1,  141,    2, 0x0a /* Public */,
-      15,    1,  144,    2, 0x0a /* Public */,
-      16,    1,  147,    2, 0x0a /* Public */,
-      17,    1,  150,    2, 0x0a /* Public */,
-      18,    1,  153,    2, 0x0a /* Public */,
-      19,    1,  156,    2, 0x0a /* Public */,
-      20,    1,  159,    2, 0x0a /* Public */,
-      21,    1,  162,    2, 0x0a /* Public */,
-      23,    0,  165,    2, 0x0a /* Public */,
-      24,    1,  166,    2, 0x0a /* Public */,
-      26,    0,  169,    2, 0x0a /* Public */,
+       6,    1,  138,    2, 0x0a /* Public */,
+       7,    1,  141,    2, 0x0a /* Public */,
+       8,    1,  144,    2, 0x0a /* Public */,
+       9,    1,  147,    2, 0x0a /* Public */,
+      11,    1,  150,    2, 0x0a /* Public */,
+      12,    1,  153,    2, 0x0a /* Public */,
+      13,    1,  156,    2, 0x0a /* Public */,
+      15,    1,  159,    2, 0x0a /* Public */,
+      16,    1,  162,    2, 0x0a /* Public */,
+      17,    1,  165,    2, 0x0a /* Public */,
+      18,    1,  168,    2, 0x0a /* Public */,
+      19,    1,  171,    2, 0x0a /* Public */,
+      20,    1,  174,    2, 0x0a /* Public */,
+      21,    1,  177,    2, 0x0a /* Public */,
+      22,    1,  180,    2, 0x0a /* Public */,
+      23,    1,  183,    2, 0x0a /* Public */,
+      24,    1,  186,    2, 0x0a /* Public */,
+      26,    0,  189,    2, 0x0a /* Public */,
+      27,    1,  190,    2, 0x0a /* Public */,
+      29,    0,  193,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -129,9 +137,12 @@ static const uint qt_meta_data_MyGLWidget[] = {
     QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void, QMetaType::Int,   10,
-    QMetaType::Void, QMetaType::QString,   22,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
     QMetaType::Void, QMetaType::QString,   25,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   28,
     QMetaType::Void,
 
        0        // eod
@@ -158,11 +169,14 @@ void MyGLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->setOctaves((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 13: _t->setScroll((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 14: _t->setRoughness((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 15: _t->setRoughnessFrequency((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 16: _t->setText((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 17: _t->saveToFile(); break;
-        case 18: _t->setPointsString((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 19: _t->loadPointsFromFile(); break;
+        case 15: _t->setFlatnessFreq((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->setFlatnessSize((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: _t->setFlatnessStrength((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: _t->setRoughnessFrequency((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->setText((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 20: _t->saveToFile(); break;
+        case 21: _t->setPointsString((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 22: _t->loadPointsFromFile(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -220,13 +234,13 @@ int MyGLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 20;
+        _id -= 23;
     }
     return _id;
 }
