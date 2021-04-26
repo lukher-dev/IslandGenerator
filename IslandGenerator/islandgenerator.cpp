@@ -13,9 +13,9 @@ IslandGenerator::IslandGenerator()
 {
 	points_string = "[0.3,0.2],[0.1,0.9],[0.9,0.9],[0.6,0.7],[0.8,0.1]";
     land_noise = (float)0.36;
-	land_height = (float)0.06;
+    land_height = (float)0.1;
     seabed_noise = (float)0.08;
-    seabed_height = (float)0.1;
+    seabed_height = (float)0.15;
 	water_height = (float)0.0;
 	frequency = (float)3.6;
 	resolution = 40;
@@ -25,7 +25,7 @@ IslandGenerator::IslandGenerator()
 	roughness_frequency = (float)7;
     flatness_size = (float) 0.5;
     flatness_freq = (float) 3.6;
-    flatness_strength = (float) 6;
+    flatness_strength = (float) 60;
 	srand((unsigned)time(0));
 	seed = rand();
 	name = "output";
@@ -176,46 +176,63 @@ float distance(int x1, int y1, int x2, int y2)
                 pow(y2 - y1, 2) * 1.0);
 }
 
-std::vector<std::vector<float>> IslandGenerator::plateu(std::vector<std::vector<float>> landMap) {
+std::vector<std::vector<float>> IslandGenerator::plateu() {
+    std::vector<std::vector<float>> height_map(resolution);
+    for (int i = 0; i < resolution; i += 1) {
+        height_map[i].resize(resolution, 0);
+    }
+
     PerlinNoise pn(seed);
         for (int i = 0; i < resolution; i++) {
             for (int j = 0; j < resolution; j++) {
-                if(pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j)<flatness_size){
-                   landMap[i][j] = landMap[i][j]*pow(pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j)/flatness_size,flatness_strength);
-                }
+                if (pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j)<flatness_size)
+                    height_map[i][j] = pn.noise(flatness_freq * 0.03*i, scroll, flatness_freq * 0.03*j);
             }
         }
 
-    return landMap;
+    return height_map;
 }
 
 std::vector<std::vector<float>> IslandGenerator::extrudeTerrain(std::vector<std::vector<float>> landMap) {
     float range = 1 - land_height;
     std::vector<std::vector<float>> height_map = generateHeightMap();
-
     for (int i = 0; i < resolution; i += 1) {
         for (int j = 0; j < resolution; j += 1) {
             if(landMap[i][j]>0){
-                float nearSea = 1;
-                if(i+1 < resolution && landMap[i+1][j] == 0){
-                    nearSea = 0.5;
-                    height_map[i+1][j]*=0.5;
-                }
-                if(j+1 < resolution && landMap[i][j+1] == 0){
-                    nearSea = 0.5;
-                    height_map[i][j+1]*=0.5;
-                }
-                if(i-1 >= 0 && landMap[i-1][j] == 0){
-                    nearSea = 0.5;
-                    height_map[i-1][j]*=0.5;
-                }
-                if(j-1 >= 0 && landMap[i][j-1] == 0){
-                    nearSea = 0.5;
-                    height_map[i][j-1]*=0.5;
-                }
-                height_map[i][j] = nearSea * float((landMap[i][j] * land_noise * 2 * (perlinMatrix[i][j] - 0.5) * range) + land_height);
+                height_map[i][j] = float((landMap[i][j] * land_noise * 2 * (perlinMatrix[i][j] - 0.5) * range) + land_height);
             }
         }
+    }
+
+    std::vector<std::vector<float>> output_map(resolution);
+    for (int i = 0; i < resolution; i += 1) {
+        output_map[i].resize(resolution, 0);
+    }
+
+    std::vector<std::vector<float>> avg_map = plateu();
+    int size = 1;
+    for (int k = 0; k < flatness_strength; k++){
+        for (int i = 0; i < resolution; i += 1) {
+            for (int j = 0; j < resolution; j += 1) {
+                float avg = 0.0;
+                int divider = 0;
+                for (int h = std::max(i-size,0); h <= std::min(i+size,resolution-2); h++) {
+                    if(j!=h)  {
+                        avg += height_map[j][h];
+                        divider++;
+                    }
+                }
+                for (int h = std::max(j-size,0); h <= std::min(j+size,resolution-2); h++) {
+                    if(i!=h) {
+                        avg += height_map[h][i];
+                        divider++;
+                    }
+                }
+                avg = avg / divider;
+                output_map[j][i] = (1-avg_map[j][i])*height_map[j][i] + avg_map[j][i]*avg;
+            }
+        }
+        height_map = output_map;
     }
 
     return height_map;
@@ -263,5 +280,5 @@ void IslandGenerator::loadPoints() {
 void IslandGenerator::generateIsland() {
     loadPoints();
 	perlinMatrix = generatePerlinMatrix();
-    height_map = extrudeTerrain(plateu(plotPolygon()));
+    height_map = extrudeTerrain(plotPolygon());
 }

@@ -138,7 +138,7 @@ void MyGLWidget::setFlatnessSize(int amount){
 
 
 void MyGLWidget::setFlatnessStrength(int amount){
-    islandGenerator.setFlatnessStrength(amount/10.0);
+    islandGenerator.setFlatnessStrength(amount);
     updateMap();
     updateGL();
 }

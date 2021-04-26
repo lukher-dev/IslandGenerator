@@ -11,7 +11,7 @@ protected:
     std::vector<std::vector<float>> generatePerlinMatrix();
     std::vector<std::vector<float>> plotPolygon();
     std::vector<std::vector<float>> extrudeTerrain(std::vector<std::vector<float>> landMap);
-    std::vector<std::vector<float>> plateu(std::vector<std::vector<float>> landMap);
+    std::vector<std::vector<float>> plateu();
 public:
     IslandGenerator();
     void setLandNoise(float amount) { land_noise = amount; };
